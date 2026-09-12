@@ -1,0 +1,559 @@
+/*
+ * DSA financial information theme
+ * A late-loading visual layer for the packaged frontend. It deliberately
+ * reuses the application's existing semantic variables and component classes
+ * so routes, state, and component structure remain untouched.
+ */
+
+:root:not(.dark),
+:root.light {
+  color-scheme: light;
+  --background: 42 24% 98%;
+  --foreground: 222 14% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 14% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 14% 10%;
+  --primary: 222 14% 10%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 36 12% 94%;
+  --secondary-foreground: 222 11% 18%;
+  --muted: 36 13% 96%;
+  --muted-foreground: 220 7% 42%;
+  --accent: 36 11% 93%;
+  --accent-foreground: 222 11% 18%;
+  --destructive: 0 56% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 8% 82%;
+  --input: 220 8% 78%;
+  --ring: 222 14% 10%;
+  --radius: .25rem;
+  --elevated: 0 0% 100%;
+  --hover: 36 11% 93%;
+  --secondary-text: 220 8% 27%;
+  --muted-text: 220 6% 43%;
+  --color-cyan: hsl(var(--primary));
+  --color-cyan-dim: hsl(var(--primary) / .74);
+  --color-cyan-glow: transparent;
+  --color-purple: 220 7% 35%;
+  --color-purple-dim: 220 6% 45%;
+  --color-purple-glow: transparent;
+  --color-success: 150 42% 30%;
+  --color-warning: 38 64% 38%;
+  --color-danger: 0 56% 42%;
+  --color-danger-alert-text: 0 48% 34%;
+  --color-danger-alert-border: 0 54% 72%;
+  --color-danger-alert-bg: 0 75% 97%;
+  --color-cyan-400: 222 14% 10%;
+  --color-emerald-400: 150 42% 30%;
+  --color-red-400: 0 56% 42%;
+  --color-amber-400: 38 64% 38%;
+  --success: var(--color-success);
+  --warning: var(--color-warning);
+  --danger: var(--color-danger);
+  --sentiment-greed: var(--color-success);
+  --sentiment-neutral: 220 6% 43%;
+  --sentiment-fear: var(--color-danger);
+  --glow-spread: 0px;
+  --glow-intensity: 0;
+  --bg-base: hsl(var(--background));
+  --bg-card: hsl(var(--card));
+  --bg-elevated: hsl(var(--elevated));
+  --bg-hover: hsl(var(--hover));
+  --bg-subtle: hsl(var(--foreground) / .025);
+  --border-dim: hsl(var(--foreground) / .08);
+  --border-subtle: hsl(var(--foreground) / .1);
+  --border-subtle-hover: hsl(var(--foreground) / .18);
+  --border-default: hsl(var(--border));
+  --border-hover: hsl(var(--foreground) / .5);
+  --border-selected: hsl(var(--foreground));
+  --surface-1: hsl(var(--card));
+  --surface-2: hsl(var(--elevated));
+  --surface-3: hsl(var(--hover));
+  --overlay-hover: hsl(var(--foreground) / .05);
+  --overlay-selected: hsl(var(--foreground) / .08);
+  --border-accent: hsl(var(--foreground));
+  --border-purple: hsl(var(--border));
+  --border-cyan: hsl(var(--foreground));
+  --text-primary: hsl(var(--foreground));
+  --text-secondary-text: hsl(var(--secondary-text));
+  --text-muted-text: hsl(var(--muted-text));
+  --nav-active-bg: hsl(var(--foreground) / .06);
+  --nav-active-border: hsl(var(--foreground) / .18);
+  --nav-active-shadow: transparent;
+  --nav-hover-bg: hsl(var(--foreground) / .035);
+  --nav-icon-active: hsl(var(--foreground));
+  --nav-indicator-width: .1875rem;
+  --nav-indicator-bg: hsl(var(--foreground));
+  --nav-indicator-shadow: transparent;
+  --nav-badge-bg: hsl(var(--foreground));
+  --nav-brand-shadow: transparent;
+  --shell-sidebar-border: hsl(var(--border));
+  --home-loading-ring-track: hsl(var(--foreground) / .14);
+  --home-loading-ring-head: hsl(var(--foreground));
+  --home-action-ai-bg: hsl(var(--foreground) / .055);
+  --home-action-ai-border: hsl(var(--foreground) / .14);
+  --home-action-ai-text: hsl(var(--foreground));
+  --home-action-ai-hover-bg: hsl(var(--foreground) / .09);
+  --home-action-report-bg: hsl(var(--foreground) / .04);
+  --home-action-report-border: hsl(var(--foreground) / .14);
+  --home-action-report-text: hsl(var(--foreground));
+  --home-action-report-hover-bg: hsl(var(--foreground) / .08);
+  --home-accent-bg: hsl(var(--foreground) / .055);
+  --home-accent-bg-hover: hsl(var(--foreground) / .09);
+  --home-accent-border: hsl(var(--foreground) / .14);
+  --home-accent-border-hover: hsl(var(--foreground) / .28);
+  --home-accent-text: hsl(var(--foreground));
+  --home-secondary-accent-text: hsl(var(--secondary-text));
+  --home-title-accent: hsl(var(--foreground));
+  --home-price-up: hsl(var(--success));
+  --home-price-down: hsl(var(--danger));
+  --home-strategy-buy: hsl(var(--success));
+  --home-strategy-secondary: hsl(var(--foreground));
+  --home-strategy-stop: hsl(var(--danger));
+  --home-strategy-take: hsl(var(--warning));
+  --home-panel-border: hsl(var(--border));
+  --home-panel-border-hover: hsl(var(--foreground) / .22);
+  --home-panel-border-selected: hsl(var(--foreground));
+  --home-panel-gradient-start: transparent;
+  --home-panel-gradient-mid: transparent;
+  --home-panel-gradient-end: transparent;
+  --home-panel-selected-shadow: none;
+  --home-panel-subtle-bg: hsl(var(--card));
+  --home-panel-subtle-bg-hover: hsl(var(--hover));
+  --home-history-item-bg: hsl(var(--card));
+  --home-history-item-hover-bg: hsl(var(--hover));
+  --home-history-item-selected-bg: hsl(var(--foreground) / .055);
+  --home-divider-border: hsl(var(--border));
+  --home-surface-button-bg: hsl(var(--card));
+  --home-surface-button-bg-hover: hsl(var(--hover));
+  --home-surface-button-border: hsl(var(--border));
+  --home-surface-button-border-hover: hsl(var(--foreground) / .32);
+  --home-state-icon-muted: hsl(var(--muted-text));
+  --home-prose-border: hsl(var(--foreground) / .12);
+  --home-prose-border-strong: hsl(var(--foreground) / .18);
+  --home-prose-blockquote-border: hsl(var(--foreground) / .38);
+  --home-prose-blockquote-bg: hsl(var(--foreground) / .035);
+  --home-panel-shadow: none;
+  --home-panel-shadow-hover: none;
+  --home-hero-border: hsl(var(--border));
+  --home-hero-gradient-start: transparent;
+  --home-hero-gradient-mid: transparent;
+  --home-hero-gradient-end: transparent;
+  --home-hero-shadow: none;
+  --home-rail-border: hsl(var(--border));
+  --home-rail-bg: hsl(var(--card));
+  --home-rail-shadow: none;
+  --home-history-glow: transparent;
+  --autocomplete-hover-bg: hsl(var(--foreground) / .09);
+  --shadow-soft-card: none;
+  --shadow-soft-card-strong: none;
+  --settings-surface: hsl(var(--card));
+  --settings-surface-hover: hsl(var(--hover));
+  --settings-surface-strong: hsl(var(--card));
+  --settings-surface-panel: hsl(var(--muted));
+  --settings-surface-overlay: hsl(var(--muted));
+  --settings-surface-overlay-soft: hsl(var(--muted));
+  --settings-surface-overlay-muted: hsl(var(--muted));
+  --settings-border: hsl(var(--border));
+  --settings-border-soft: hsl(var(--border));
+  --settings-border-strong: hsl(var(--foreground) / .3);
+  --settings-border-overlay: hsl(var(--foreground) / .25);
+  --settings-accent-shadow: transparent;
+  --settings-primary-border: hsl(var(--foreground));
+  --settings-primary-gradient: hsl(var(--foreground));
+  --settings-primary-text: hsl(var(--primary-foreground));
+  --settings-primary-shadow: transparent;
+  --settings-primary-shadow-hover: transparent;
+  --settings-secondary-border: hsl(var(--border));
+  --settings-secondary-bg: hsl(var(--card));
+  --settings-secondary-border-hover: hsl(var(--foreground) / .34);
+  --settings-secondary-bg-hover: hsl(var(--hover));
+  --settings-glow-hover: transparent;
+  --settings-skeleton-strong: hsl(var(--foreground) / .12);
+  --settings-skeleton-soft: hsl(var(--foreground) / .07);
+  --input-surface-bg: hsl(var(--card));
+  --input-surface-border: hsl(var(--border));
+  --input-surface-border-hover: hsl(var(--foreground) / .32);
+  --input-surface-border-focus: hsl(var(--foreground));
+  --input-surface-focus-ring: 0 0 0 2px hsl(var(--foreground) / .14);
+  --settings-input-rest-border: hsl(var(--border));
+  --gradient-primary: hsl(var(--foreground));
+  --chat-avatar-user-bg: hsl(var(--foreground));
+  --chat-avatar-user-fg: hsl(var(--primary-foreground));
+  --chat-avatar-user-border: hsl(var(--foreground));
+  --chat-avatar-ai-bg: hsl(var(--muted));
+  --chat-avatar-ai-fg: hsl(var(--foreground));
+  --chat-avatar-ai-border: hsl(var(--border));
+  --chat-bubble-user-bg: hsl(var(--foreground) / .055);
+  --chat-bubble-user-border: hsl(var(--foreground) / .14);
+  --chat-bubble-ai-bg: hsl(var(--card));
+  --chat-bubble-ai-border: hsl(var(--border));
+  --backtest-border-dim: hsl(var(--border));
+  --backtest-border-subtle: hsl(var(--border));
+  --backtest-border-light: hsl(var(--foreground) / .18);
+  --backtest-border-cyan-soft: hsl(var(--foreground) / .34);
+  --backtest-bg-cyan-subtle: hsl(var(--foreground) / .05);
+  --backtest-shadow-cyan-glow: none;
+  --backtest-shadow-cyan-glow-strong: none;
+  --backtest-spinner-track: hsl(var(--foreground) / .14);
+  --backtest-spinner-head: hsl(var(--foreground));
+  --backtest-table-bg: hsl(var(--card));
+  --login-bg-main: hsl(var(--background));
+  --login-bg-card: hsl(var(--card));
+  --login-border-card: hsl(var(--border));
+  --login-border-input: hsl(var(--border));
+  --login-border-focus: hsl(var(--foreground));
+  --login-text-primary: hsl(var(--foreground));
+  --login-text-secondary: hsl(var(--secondary-text));
+  --login-text-muted: hsl(var(--muted-text));
+  --login-accent-soft: hsl(var(--foreground) / .055);
+  --login-accent-border: hsl(var(--border));
+  --login-accent-text: hsl(var(--foreground));
+  --login-accent-glow: transparent;
+  --login-brand-start: hsl(var(--foreground));
+  --login-brand-end: hsl(var(--foreground));
+  --login-brand-button-start: hsl(var(--foreground));
+  --login-brand-button-end: hsl(var(--foreground));
+  --login-brand-button-start-hover: hsl(var(--foreground));
+  --login-brand-button-end-hover: hsl(var(--foreground));
+  --login-button-text: hsl(var(--primary-foreground));
+  --login-label-text: hsl(var(--foreground));
+  --login-hint-text: hsl(var(--muted-text));
+  --login-input-icon: hsl(var(--muted-text));
+  --login-input-toggle-bg: hsl(var(--card));
+  --login-input-toggle-border: hsl(var(--border));
+  --login-input-toggle-text: hsl(var(--secondary-text));
+  --login-input-toggle-border-hover: hsl(var(--foreground) / .3);
+  --login-input-toggle-bg-hover: hsl(var(--hover));
+  --login-input-toggle-text-hover: hsl(var(--foreground));
+  --login-input-toggle-ring: hsl(var(--foreground) / .12);
+  --login-input-toggle-active-bg: hsl(var(--foreground) / .07);
+  --login-input-toggle-active-border: hsl(var(--foreground) / .32);
+  --login-input-toggle-active-text: hsl(var(--foreground));
+  --login-grid-line: transparent;
+  --login-grid-mask: none;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --background: 222 15% 7%;
+  --foreground: 36 15% 93%;
+  --card: 222 12% 10%;
+  --card-foreground: 36 15% 93%;
+  --popover: 222 12% 10%;
+  --popover-foreground: 36 15% 93%;
+  --primary: 36 15% 93%;
+  --primary-foreground: 222 15% 7%;
+  --secondary: 222 10% 15%;
+  --secondary-foreground: 36 12% 87%;
+  --muted: 222 10% 13%;
+  --muted-foreground: 220 7% 65%;
+  --accent: 222 9% 17%;
+  --accent-foreground: 36 15% 93%;
+  --destructive: 0 58% 64%;
+  --destructive-foreground: 222 15% 7%;
+  --border: 222 7% 25%;
+  --input: 222 7% 29%;
+  --ring: 36 15% 93%;
+  --elevated: 222 11% 12%;
+  --hover: 222 9% 16%;
+  --secondary-text: 220 8% 78%;
+  --muted-text: 220 6% 58%;
+  --color-purple: 220 7% 72%;
+  --color-purple-dim: 220 6% 63%;
+  --color-success: 150 35% 56%;
+  --color-warning: 38 63% 62%;
+  --color-danger: 0 58% 64%;
+  --color-danger-alert-text: 0 72% 76%;
+  --color-danger-alert-border: 0 34% 37%;
+  --color-danger-alert-bg: 0 25% 14%;
+  --color-cyan-400: 36 15% 93%;
+  --color-emerald-400: 150 35% 56%;
+  --color-red-400: 0 58% 64%;
+  --color-amber-400: 38 63% 62%;
+  --sentiment-neutral: 220 6% 64%;
+  --bg-subtle: hsl(var(--foreground) / .035);
+  --border-dim: hsl(var(--foreground) / .09);
+  --border-subtle: hsl(var(--foreground) / .12);
+  --border-subtle-hover: hsl(var(--foreground) / .22);
+  --border-hover: hsl(var(--foreground) / .56);
+  --overlay-hover: hsl(var(--foreground) / .07);
+  --overlay-selected: hsl(var(--foreground) / .1);
+  --nav-active-bg: hsl(var(--foreground) / .09);
+  --nav-active-border: hsl(var(--foreground) / .22);
+  --nav-hover-bg: hsl(var(--foreground) / .055);
+  --home-panel-subtle-bg: hsl(var(--card));
+  --home-panel-subtle-bg-hover: hsl(var(--hover));
+  --home-history-item-bg: hsl(var(--card));
+  --home-history-item-hover-bg: hsl(var(--hover));
+  --home-history-item-selected-bg: hsl(var(--foreground) / .08);
+  --home-surface-button-bg: hsl(var(--card));
+  --home-surface-button-bg-hover: hsl(var(--hover));
+  --settings-surface: hsl(var(--card));
+  --settings-surface-hover: hsl(var(--hover));
+  --settings-surface-strong: hsl(var(--card));
+  --settings-surface-panel: hsl(var(--muted));
+  --settings-surface-overlay: hsl(var(--muted));
+  --settings-surface-overlay-soft: hsl(var(--muted));
+  --settings-surface-overlay-muted: hsl(var(--muted));
+  --settings-border: hsl(var(--border));
+  --settings-border-soft: hsl(var(--border));
+  --settings-border-strong: hsl(var(--foreground) / .32);
+  --settings-border-overlay: hsl(var(--foreground) / .25);
+  --settings-secondary-border: hsl(var(--border));
+  --settings-secondary-bg: hsl(var(--card));
+  --settings-secondary-border-hover: hsl(var(--foreground) / .38);
+  --settings-secondary-bg-hover: hsl(var(--hover));
+  --input-surface-bg: hsl(var(--card));
+  --input-surface-border: hsl(var(--border));
+  --input-surface-border-hover: hsl(var(--foreground) / .36);
+  --input-surface-focus-ring: 0 0 0 2px hsl(var(--foreground) / .16);
+  --backtest-table-bg: hsl(var(--card));
+  --login-bg-main: hsl(var(--background));
+  --login-bg-card: hsl(var(--card));
+  --login-border-card: hsl(var(--border));
+  --login-border-input: hsl(var(--border));
+  --login-text-primary: hsl(var(--foreground));
+  --login-text-secondary: hsl(var(--secondary-text));
+  --login-text-muted: hsl(var(--muted-text));
+  --login-accent-soft: hsl(var(--foreground) / .06);
+  --login-accent-border: hsl(var(--border));
+  --login-accent-text: hsl(var(--foreground));
+  --login-input-toggle-bg: hsl(var(--card));
+  --login-input-toggle-border: hsl(var(--border));
+  --login-input-toggle-text: hsl(var(--secondary-text));
+  --login-input-toggle-border-hover: hsl(var(--foreground) / .36);
+  --login-input-toggle-bg-hover: hsl(var(--hover));
+  --login-input-toggle-text-hover: hsl(var(--foreground));
+  --login-input-toggle-active-bg: hsl(var(--foreground) / .09);
+  --login-input-toggle-active-border: hsl(var(--foreground) / .36);
+  --login-input-toggle-active-text: hsl(var(--foreground));
+}
+
+html,
+body,
+#root {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:where(h1, h2, h3, h4) {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+  letter-spacing: -.018em;
+}
+
+h1 { font-size: clamp(1.5rem, 2vw, 2rem); line-height: 1.12; }
+h2 { font-size: 1rem; line-height: 1.25; }
+
+:where(table, .tabular-nums, .font-mono, .backtest-summary, .backtest-table) {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+:where(button, input, select, textarea) {
+  border-radius: .25rem;
+}
+
+:where(input, select, textarea, .input-surface) {
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+  box-shadow: none;
+}
+
+:where(input, select, textarea, button, [role="button"], [role="tab"]):focus-visible {
+  outline: 2px solid hsl(var(--foreground) / .7);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+:where(.rounded-xl, .rounded-2xl, .rounded-3xl, .rounded-\[1rem\], .rounded-\[1\.15rem\], .rounded-\[1\.25rem\], .rounded-\[1\.35rem\], .rounded-\[1\.5rem\]) {
+  border-radius: .25rem;
+}
+
+:where(.glass-panel, .glass-panel-lg, .glass-card, .dashboard-card, .terminal-card, .home-panel-card, .home-rail-card, .home-report-hero, .home-subpanel, .home-history-item, .settings-surface, .settings-surface-strong, .settings-surface-panel, .backtest-table-wrapper, .backtest-summary, .skill-desc-tooltip) {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+:where(.backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl) {
+  backdrop-filter: none !important;
+}
+
+:where(.glass-panel, .glass-panel-lg, .glass-card, .dashboard-card, .terminal-card, .gradient-border-card, .home-history-item, .shell-page-frame)::before,
+:where(.terminal-card, .home-strategy-card)::after {
+  background: none !important;
+  box-shadow: none !important;
+  display: none !important;
+}
+
+.gradient-border-card,
+.gradient-border-card-inner {
+  background: hsl(var(--card)) !important;
+  box-shadow: none !important;
+}
+
+:where(.bg-primary-gradient, .btn-primary, .settings-button-primary, [data-variant="primary"], [data-variant="gradient"], [data-variant="settings-primary"]) {
+  background: hsl(var(--primary)) !important;
+  background-image: none !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+  color: hsl(var(--primary-foreground)) !important;
+  font-weight: 650;
+}
+
+:where([data-variant]) {
+  box-shadow: none !important;
+}
+
+:where(.btn-secondary, .settings-button-secondary, .home-surface-button, .backtest-force-btn, [data-variant="secondary"], [data-variant="outline"], [data-variant="ghost"], [data-variant="settings-secondary"], [data-variant="action-secondary"]) {
+  background: transparent !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+}
+
+:where(.bg-primary-gradient, .btn-primary, .settings-button-primary, [data-variant="primary"], [data-variant="gradient"], [data-variant="settings-primary"]):hover {
+  background: hsl(var(--foreground) / .84) !important;
+  border-color: hsl(var(--foreground)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  transform: none !important;
+}
+
+:where(.btn-secondary, .settings-button-secondary, .home-surface-button, .backtest-force-btn, [data-variant="secondary"], [data-variant="outline"], [data-variant="ghost"], [data-variant="settings-secondary"], [data-variant="action-secondary"]):hover {
+  background: hsl(var(--hover)) !important;
+  border-color: hsl(var(--foreground) / .42) !important;
+  color: hsl(var(--foreground)) !important;
+  transform: none !important;
+}
+
+:where([role="tab"]) {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  color: hsl(var(--muted-text));
+  font-weight: 600;
+}
+
+:where([role="tab"][aria-selected="true"]) {
+  border-bottom-color: hsl(var(--foreground)) !important;
+  color: hsl(var(--foreground));
+}
+
+:where(.badge, .backtest-status-chip, .home-accent-chip, .home-accent-pill-link, .home-board-pill, .home-board-status-badge, .home-history-sentiment-badge, .quick-question-btn) {
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+}
+
+.badge-cyan,
+.badge-purple {
+  background: hsl(var(--foreground) / .055) !important;
+  border-color: hsl(var(--foreground) / .14) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.badge-success,
+.backtest-status-chip-success {
+  background: hsl(var(--success) / .1) !important;
+  border-color: hsl(var(--success) / .22) !important;
+  color: hsl(var(--success)) !important;
+}
+
+.badge-danger,
+.backtest-status-chip-danger {
+  background: hsl(var(--danger) / .1) !important;
+  border-color: hsl(var(--danger) / .22) !important;
+  color: hsl(var(--danger)) !important;
+}
+
+:where([role="alert"], .inline-alert, .settings-alert) {
+  background: hsl(var(--foreground) / .035) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+}
+
+:where(table, .backtest-table) {
+  border-collapse: collapse;
+  background: hsl(var(--card));
+}
+
+:where(th, .backtest-table-head-cell) {
+  background: hsl(var(--muted));
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--secondary-text));
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+:where(td, th, .backtest-table-cell, .backtest-table-head-cell) {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid hsl(var(--border) / .82) !important;
+  padding-top: .45rem !important;
+  padding-bottom: .45rem !important;
+}
+
+:where(tbody tr:hover, .backtest-table-row:hover) {
+  background: hsl(var(--foreground) / .035) !important;
+}
+
+:where(.text-success, .text-emerald-400) { color: hsl(var(--success)) !important; }
+:where(.text-danger, .text-red-400) { color: hsl(var(--danger)) !important; }
+:where(.text-warning, .text-amber-400) { color: hsl(var(--warning)) !important; }
+
+:where(.chat-bubble-user, .chat-bubble-ai, .session-item, .list-item) {
+  border-radius: .25rem !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.session-item.active {
+  background: hsl(var(--foreground) / .07) !important;
+  border-color: hsl(var(--foreground) / .28) !important;
+  box-shadow: none !important;
+}
+
+.session-item.active .indicator {
+  background: hsl(var(--foreground)) !important;
+}
+
+:where(.recharts-cartesian-grid line, .recharts-cartesian-axis-line, .recharts-cartesian-axis-tick-line) {
+  stroke: hsl(var(--border)) !important;
+}
+
+:where(.recharts-text, .recharts-label, .recharts-cartesian-axis-tick-value) {
+  fill: hsl(var(--muted-text)) !important;
+}
+
+:where(.recharts-tooltip-wrapper) {
+  border-radius: .25rem;
+  box-shadow: none !important;
+}
+
+:where(.glow-cyan, .glow-purple, .shadow-glow-cyan, .settings-glow-cyan-hover:hover, .gauge-glow) {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+:where(.animate-pulse-glow, .animate-fade-in, .animate-slide-in-left, .animate-slide-in-right, .animate-slide-up) {
+  animation: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground) / .2) !important;
+  border-radius: 0 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / .35) !important;
+}
