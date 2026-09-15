@@ -145,6 +145,7 @@
   --home-rail-bg: hsl(var(--card));
   --home-rail-shadow: none;
   --home-history-glow: transparent;
+  --home-gauge-track: hsl(var(--foreground) / .12);
   --autocomplete-hover-bg: hsl(var(--foreground) / .09);
   --shadow-soft-card: none;
   --shadow-soft-card-strong: none;
@@ -288,6 +289,7 @@
   --home-history-item-bg: hsl(var(--card));
   --home-history-item-hover-bg: hsl(var(--hover));
   --home-history-item-selected-bg: hsl(var(--foreground) / .08);
+  --home-gauge-track: hsl(var(--foreground) / .16);
   --home-surface-button-bg: hsl(var(--card));
   --home-surface-button-bg-hover: hsl(var(--hover));
   --settings-surface: hsl(var(--card));
@@ -556,4 +558,45 @@ h2 { font-size: 1rem; line-height: 1.25; }
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--foreground) / .35) !important;
+}
+
+/* Homepage dashboard refinements: keep the existing information layout while
+   removing the legacy animated, glowing dashboard treatment. */
+.score-gauge .gauge-ring {
+  filter: none;
+  transform: none;
+}
+
+.score-gauge .gauge-track {
+  stroke: var(--home-gauge-track);
+}
+
+.score-gauge .gauge-progress {
+  transition: none;
+}
+
+.home-strategy-rule {
+  background: var(--home-strategy-tone);
+  opacity: .68;
+}
+
+.home-history-item {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.home-history-item:hover {
+  background: hsl(var(--foreground) / .035) !important;
+  border-bottom-color: hsl(var(--foreground) / .2) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.home-history-item-selected {
+  background: hsl(var(--foreground) / .065) !important;
+  border-inline-start: 2px solid hsl(var(--foreground)) !important;
 }

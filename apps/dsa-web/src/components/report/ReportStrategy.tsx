@@ -28,8 +28,7 @@ const StrategyItem: React.FC<StrategyItemProps> = ({
       </span>
     </div>
     <div
-      className="absolute bottom-0 left-0 right-0 h-0.5"
-      style={{ background: `linear-gradient(90deg, transparent, var(${tone}), transparent)` }}
+      className="home-strategy-rule absolute bottom-0 left-0 right-0 h-px"
     />
   </div>
 );

@@ -66,7 +66,6 @@ export const HistoryListItem: React.FC<HistoryListItemProps> = ({
               className="w-1 h-8 rounded-full flex-shrink-0"
               style={{
                 backgroundColor: sentimentColor,
-                boxShadow: `0 0 10px ${sentimentColor}40`,
               }}
             />
           )}
